@@ -8,6 +8,9 @@ import os
 import mysql.connector
 
 
+PII_FIELDS = ("name", "email", "phone", "ssn", "password")
+
+
 def filter_datum(
     fields: List[str],
     redaction: str,
@@ -45,9 +48,6 @@ class RedactingFormatter(logging.Formatter):
         )
 
 
-PII_FIELDS = ("name", "email", "phone", "ssn", "password")
-
-
 def get_logger() -> logging.Logger:
     """gets a logger named user_data"""
     logger = logging.getLogger("user_data")
@@ -71,7 +71,7 @@ def get_db() -> mysql.connector.connection.MySQLConnection:
     )
 
 
-def main() -> None:
+def main():
     """main function"""
     db = get_db()
     cursor = db.cursor()
