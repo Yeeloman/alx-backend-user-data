@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""0x00. Personal data"""
+"""0x00. Personal data more text to test"""
 
 import logging
 import re
