@@ -17,8 +17,13 @@ def filter_datum(
     message: str,
     separator: str
 ) -> str:
-    """a function called filter_datum
-    that returns the log message obfuscated
+    """
+    Return an obfuscated log message
+    Args:
+        fields (list): list of strings indicating fields to obfuscate
+        redaction (str): what the field will be obfuscated to
+        message (str): the log line to obfuscate
+        separator (str): the character separating the fields
     """
     for field in fields:
         pattern = f'{field}=[^{separator}]*'
