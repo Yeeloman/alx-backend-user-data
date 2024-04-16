@@ -25,7 +25,11 @@ elif os.getenv('AUTH_TYPE') == "basic_auth":
 @app.before_request
 def before_req_func():
     """handles before requests"""
-    excluded_paths = ['/api/v1/status/', '/api/v1/unauthorized/', '/api/v1/forbidden/']
+    excluded_paths = [
+        '/api/v1/status/',
+        '/api/v1/unauthorized/',
+        '/api/v1/forbidden/'
+    ]
     if auth:
         if not request or not auth.require_auth(request.path, excluded_paths):
             return
