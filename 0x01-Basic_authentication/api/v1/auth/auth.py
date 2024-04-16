@@ -15,19 +15,18 @@ class Auth:
         if not path or not excluded_paths or len(excluded_paths) == 0:
             return True
         if path.endswith('/') and path in excluded_paths:
-                return False
+            return False
         if path + '/' in excluded_paths:
             return False
         return True
 
-    def authorization_header(self, request=None) -> str|None:
+    def authorization_header(self, request=None) -> str | None:
         """validate all requests to secure the API"""
         if not request:
             return None
         return request.headers.get("Authorization", None)
 
-
-    def current_user(self, request=None) -> TypeVar('User')|None:
+    def current_user(self, request=None) -> TypeVar('User') | None:
         """same"""
         if not request:
             return None

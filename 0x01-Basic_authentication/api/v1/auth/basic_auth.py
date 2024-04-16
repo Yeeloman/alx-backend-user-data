@@ -6,11 +6,12 @@ from models.user import User
 from typing import TypeVar
 import base64
 
+
 class BasicAuth(Auth):
     """class that implements basic auth"""
     def extract_base64_authorization_header(
             self,
-            authorization_header: str) -> str|None:
+            authorization_header: str) -> str | None:
         """as the name suggest lmao"""
         if not authorization_header \
             or not isinstance(authorization_header, str) \
@@ -20,11 +21,12 @@ class BasicAuth(Auth):
 
     def decode_base64_authorization_header(
             self,
-            base64_authorization_header: str) -> str|None:
+            base64_authorization_header: str) -> str | None:
         """the decoded value of a Base64
         string base64_authorization_header"""
-        if not base64_authorization_header \
-            or not isinstance(base64_authorization_header, str):
+        if not base64_authorization_header:
+            return None
+        if not isinstance(base64_authorization_header, str):
             return None
         try:
             decoded = base64.b64decode(base64_authorization_header)
